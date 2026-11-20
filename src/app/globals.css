@@ -1,26 +1,142 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bone: #f7f3ec;
+  --bone-deep: #efe9dd;
+  --cloud: #dfe8ec;
+  --cloud-deep: #c7d7de;
+  --ink: #241a14;
+  --brown: #4a1e0d;
+  --copper: #8c3b13;
+  --amber: #b96b22;
+  --line: #ded6c6;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bone: var(--bone);
+  --color-bone-deep: var(--bone-deep);
+  --color-cloud: var(--cloud);
+  --color-cloud-deep: var(--cloud-deep);
+  --color-ink: var(--ink);
+  --color-brown: var(--brown);
+  --color-copper: var(--copper);
+  --color-amber: var(--amber);
+  --color-line: var(--line);
+
+  --font-sans: var(--font-karla);
+  --font-mono: var(--font-dm-mono);
+  --font-display: var(--font-archivo);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    /* Fluid root size: slightly smaller type on phones, larger on wide screens.
+       Scales every rem-based size in the app. */
+    font-size: clamp(15px, 0.15vw + 14.5px, 17px);
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bone);
+    color: var(--ink);
+    font-family: var(--font-karla), ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--amber);
+    color: var(--bone);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--copper);
+    outline-offset: 3px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  /* Micro-labels read bolder by default; explicit weight utilities still win. */
+  .font-mono {
+    font-weight: 500;
+  }
+}
+
+/* Display face: heavy, expanded cut for headlines */
+.font-display {
+  font-weight: 800;
+  font-stretch: 125%;
+}
+
+/* Faint architectural grid behind the hero */
+.hero-grid {
+  background-image:
+    linear-gradient(to right, rgba(74, 30, 13, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(74, 30, 13, 0.07) 1px, transparent 1px);
+  background-size: 88px 88px;
+  -webkit-mask-image: radial-gradient(ellipse 85% 75% at 50% 15%, black 25%, transparent 78%);
+  mask-image: radial-gradient(ellipse 85% 75% at 50% 15%, black 25%, transparent 78%);
+}
+
+/* Paper grain */
+.noise {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.42'/%3E%3C/svg%3E");
+}
+
+/* Street grid for the stylised location panel */
+.map-grid {
+  background-image:
+    linear-gradient(to right, rgba(74, 30, 13, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(74, 30, 13, 0.1) 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+
+@keyframes marquee-x {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-x 44s linear infinite;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .marquee-track {
+    animation: none;
+  }
 }

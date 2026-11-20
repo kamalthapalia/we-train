@@ -1,0 +1,31 @@
+
+> we-train@0.1.0 dev
+> next dev --port 3000
+
+▲ Next.js 16.4.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.56.1:3000
+✓ Ready in 403ms
+✓ Running next.config.ts took 40ms
+- Cache Components enabled
+- Partial Prefetching enabled
+
+ GET / 200 in 527ms (next.js: 176ms, application-code: 351ms)
+ GET / 200 in 342ms (next.js: 1.6ms, application-code: 340ms)
+ GET / 200 in 80ms (next.js: 1.0ms, application-code: 79ms)
+ GET / 200 in 93ms (next.js: 0.9ms, application-code: 92ms)
+[browser] Image with src "/images/skill-bakery.jpg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+ GET / 200 in 90ms (next.js: 0.9ms, application-code: 89ms)
+ GET / 200 in 104ms (next.js: 0.9ms, application-code: 103ms)
+ GET / 200 in 116ms (next.js: 1.0ms, application-code: 115ms)
+ GET /gallery 200 in 37ms (next.js: 7ms, application-code: 31ms)
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+ GET /contact 200 in 34ms (next.js: 7ms, application-code: 27ms)
+[browser] Image with src "/images/logo.webp" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+ GET / 200 in 57ms (next.js: 1.7ms, application-code: 56ms)
+ GET / 200 in 95ms (next.js: 1.2ms, application-code: 94ms)
+  Turbopack has seen frequent file updates and is waiting for the filesystem to settle (0.5s elapsed so far; last modified: "\\\\?\\C:\\Users\\TCS\\Desktop\\we train\\.git\\objects\\26\\tmp_obj_cbPQfk").
+  Turbopack has seen frequent file updates and is waiting for the filesystem to settle (1.5s elapsed so far; last modified: "\\\\?\\C:\\Users\\TCS\\Desktop\\we train\\.git\\objects\\60\\tmp_obj_EmHGM1").
+  Turbopack has seen frequent file updates and is waiting for the filesystem to settle (3.5s elapsed so far; last modified: "\\\\?\\C:\\Users\\TCS\\Desktop\\we train\\.git\\objects\\e9\\tmp_obj_IM8QN8").
